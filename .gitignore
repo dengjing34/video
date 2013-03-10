@@ -14,8 +14,7 @@
 !/temp/Install/
 !/temp/Js/
 !/temp/proxy/
-
-!*/config/init.php
+!/template/
 # Logs and databases #
 ######################
 *.log
