@@ -3,9 +3,9 @@
 /nbproject/*
 /config.php
 !/config.sample.php
-*/config/*
-!*/config/*.sample.php
-!*/config/init.php
+/config/*
+!/config/*.sample.php
+!/config/init.php
 /temp/*
 !/temp/Banner/
 !/temp/Data/
