@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>排行榜-光线CMS</title>
+<meta name="keywords" content="GXCMS,光线CMS,光线影视内容管理系统">
+<meta name="description" content="欢迎使用光线影视内容管理系统,通过该程序可以在短时间内建立一个强大的视频站点。">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script language="javascript">var SitePath='/';var SiteMid='';var SiteCid='';var SiteId='';</script>
+<script language="JavaScript" type="text/javascript" src="/views/js/jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="/views/js/system.js"></script>
+<script language="JavaScript" type="text/javascript" src="/views/js/history.js"></script>
+<link rel='stylesheet' type='text/css' href='/views/css/system.css'>
+<link rel='stylesheet' type='text/css' href='/template/default/template.css'>
+<script language="javascript">
+$(document).ready(function(){
+	$('.top_nav>li:last').addClass('nobrd');
+	$('.top_nav>li>a').click(function(){
+		id = $(this).attr('id');
+		$('.top_nav>li').removeClass('cur');
+		$('#menu'+id).addClass('cur');
+		$('.hot').hide();
+		$('#hot'+id).show();
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+<script language="JavaScript" type="text/javascript" src="/template/default/template.js"></script>
+<div class="header">
+  <div class="top">
+    <div title="光线CMS" class="logo"></div>
+    <div id="Login" class="login"></div>    <div class="control"><a href="/map/lists/id/rss.html">RSS订阅</a>&nbsp;|&nbsp;<a href="javascript:void(0)" id="fav">收藏本站</a>&nbsp;|&nbsp;<a href="/guestbook/lists.html">留言反馈</a>&nbsp;|&nbsp;<span class="his"  id="ggg" onmouseover="fnDisplayMenu(this,'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" ><a class="headerMnuLink" id="mnuArtStylesLink" href="javascript:void(0);">播放记录</a></span></div>
+
+    <div class="popup1" id="mnuArtStyles"  style="display:none" onmouseover="fnDisplayMenu2($('#mnuArtStylesLink'),'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" >
+      <div id="history">
+      </div>
+   </div>
+
+  </div>
+  <div class="nav"><a href="/" >首页</a>
+    <a onfocus="this.blur();" href="/list/1.html" >电影</a><a onfocus="this.blur();" href="/list/2.html" >电视剧</a><a onfocus="this.blur();" href="/list/3.html" >动漫</a><a onfocus="this.blur();" href="/list/4.html" >综艺</a><a onfocus="this.blur();" href="/list/5.html" >体育</a><a onfocus="this.blur();" href="/list/6.html" >纪录片</a><a onfocus="this.blur();" href="/newslist/7.html" >资讯</a><span>|</span>
+    <a href="/top10/lists.html" >排行</a>
+    <a href="/special/lists.html" >专题</a>
+
+
+   
+  </div>
+  <div class="query"> <span class="query_l"></span>
+    <form action="/index.php?s=video/search" method="post" name="search" id="search" >
+      <input type="text" value="请输入关键字" id="wd" name="wd" autocomplete="off" maxlength="35">
+      <div id="search_sort"><span id="cur_txt">视频</span><ul class="sort" id="sort"><li><a href="javascript:void(0)">视频</a></li><li><a href="javascript:void(0)">新闻</a></li></ul></div>
+      <button type="submit" class="search_bt"><span>搜索</span></button>
+    <input type="hidden" name="__hash__" value="5db6dfa0039d8f78cd8a70f59dd79c81" /></form>
+    <div class="hot_kw">热门关键词：<a href="/index.php?s=video/search/wd/%E7%83%AD%E9%97%A8%E6%A0%87%E7%AD%BE1">热门标签1</a><a href="/index.php?s=video/search/wd/%E7%83%AD%E9%97%A8%E6%A0%87%E7%AD%BE2">热门标签2</a><a href="/index.php?s=video/search/wd/%E7%83%AD%E9%97%A8%E6%A0%87%E7%AD%BE3">热门标签3</a><a href="/index.php?s=video/search/wd/%E7%83%AD%E9%97%A8%E6%A0%87%E7%AD%BE4">热门标签4</a></div>
+    <span class="query_r"></span> </div>
+</div>
+<div class="box">
+<div class="left_col">
+  <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+    <ul class="top_nav">
+    	<li id="menu1" class="cur"><a onfocus="this.blur();" href="javascript:void(0)" id="1">电影</a></li><li id="menu2" ><a onfocus="this.blur();" href="javascript:void(0)" id="2">电视剧</a></li><li id="menu3" ><a onfocus="this.blur();" href="javascript:void(0)" id="3">动漫</a></li><li id="menu4" ><a onfocus="this.blur();" href="javascript:void(0)" id="4">综艺</a></li><li id="menu5" ><a onfocus="this.blur();" href="javascript:void(0)" id="5">体育</a></li><li id="menu6" ><a onfocus="this.blur();" href="javascript:void(0)" id="6">纪录片</a></li>    </ul>
+    </div></div>
+  <div class="btmbrd"></div> 
+</div>
+<div class="right_col">
+    <div class="news_box bd">
+    <span class="tl"></span><span class="tr"></span>
+<div class="ct hot" id="hot1" >
+        <div class="hd"><h3>电影总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="name"><a href="/movie/6.html" target="_blank">红灯梦</a></td>
+                <td>310</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name"><a href="/movie/2.html" target="_blank">少年情事</a></td>
+                <td>134</td>
+                <td class="score">1.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name"><a href="/movie/5.html" target="_blank">我非佳人</a></td>
+                <td>80</td>
+                <td class="score">9.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+                        </table>
+        </div>
+    </div><div class="ct hot" id="hot2" style="display:none">
+        <div class="hd"><h3>电视剧总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="name"><a href="/movie/12.html" target="_blank">乌丫传说</a></td>
+                <td>488</td>
+                <td class="score">1.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name"><a href="/movie/4.html" target="_blank">欢喜亲家</a></td>
+                <td>447</td>
+                <td class="score">4.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name"><a href="/movie/9.html" target="_blank">另一种灿烂生活</a></td>
+                <td>405</td>
+                <td class="score">6.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name"><a href="/movie/13.html" target="_blank">第一速度</a></td>
+                <td>395</td>
+                <td class="score">2.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name"><a href="/movie/7.html" target="_blank">真爱找麻烦</a></td>
+                <td>277</td>
+                <td class="score">1.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name"><a href="/movie/14.html" target="_blank">前男友</a></td>
+                <td>257</td>
+                <td class="score">8.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td class="name"><a href="/movie/11.html" target="_blank">廉政英雄</a></td>
+                <td>211</td>
+                <td class="score">9.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td class="name"><a href="/movie/23.html" target="_blank">缺宅男女/抉宅男女</a></td>
+                <td>110</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td class="name"><a href="/movie/16.html" target="_blank">换乐无穷国语</a></td>
+                <td>36</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td class="name"><a href="/movie/1.html" target="_blank">短腿的逆袭/Highk</a></td>
+                <td>27</td>
+                <td class="score">1.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <td colspan="5" class="line">&nbsp;
+                  </tr>          </table>
+        </div>
+    </div><div class="ct hot" id="hot3" style="display:none">
+        <div class="hd"><h3>动漫总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+                      </table>
+        </div>
+    </div><div class="ct hot" id="hot4" style="display:none">
+        <div class="hd"><h3>综艺总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="name"><a href="/movie/20.html" target="_blank">型男大主厨</a></td>
+                <td>490</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name"><a href="/movie/30.html" target="_blank">吃饭皇帝大</a></td>
+                <td>488</td>
+                <td class="score">6.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name"><a href="/movie/24.html" target="_blank">娱乐乐翻天</a></td>
+                <td>481</td>
+                <td class="score">6.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name"><a href="/movie/15.html" target="_blank">太太好吃经</a></td>
+                <td>459</td>
+                <td class="score">2.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name"><a href="/movie/32.html" target="_blank">WOMAN爱旅行</a></td>
+                <td>404</td>
+                <td class="score">8.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name"><a href="/movie/29.html" target="_blank">美食大三通</a></td>
+                <td>401</td>
+                <td class="score">7.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td class="name"><a href="/movie/18.html" target="_blank">完全娱乐</a></td>
+                <td>341</td>
+                <td class="score">9.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td class="name"><a href="/movie/3.html" target="_blank">超级新闻场</a></td>
+                <td>332</td>
+                <td class="score">6.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td class="name"><a href="/movie/25.html" target="_blank">美丽俏佳人</a></td>
+                <td>275</td>
+                <td class="score">2.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td class="name"><a href="/movie/17.html" target="_blank">爱呦我的妈</a></td>
+                <td>207</td>
+                <td class="score">3.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <td colspan="5" class="line">&nbsp;
+                  </tr><tr>
+                <td>11</td>
+                <td class="name"><a href="/movie/28.html" target="_blank">锵锵三人行</a></td>
+                <td>191</td>
+                <td class="score">4.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td class="name"><a href="/movie/19.html" target="_blank">本山快乐营</a></td>
+                <td>186</td>
+                <td class="score">4.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td class="name"><a href="/movie/26.html" target="_blank">冰冰好料理</a></td>
+                <td>173</td>
+                <td class="score">7.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td class="name"><a href="/movie/21.html" target="_blank">娱乐百分百</a></td>
+                <td>166</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td class="name"><a href="/movie/22.html" target="_blank">女人好犀利</a></td>
+                <td>163</td>
+                <td class="score">4.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td class="name"><a href="/movie/10.html" target="_blank">新兵进行曲</a></td>
+                <td>91</td>
+                <td class="score">2.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td class="name"><a href="/movie/8.html" target="_blank">百万小学堂</a></td>
+                <td>79</td>
+                <td class="score">1.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td class="name"><a href="/movie/31.html" target="_blank">国光帮帮忙</a></td>
+                <td>70</td>
+                <td class="score">5.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td class="name"><a href="/movie/27.html" target="_blank">我心唱响</a></td>
+                <td>48</td>
+                <td class="score">9.0</td>
+                <td><font color="red">2012-01-14</font></td>
+              </tr>
+                        </table>
+        </div>
+    </div><div class="ct hot" id="hot5" style="display:none">
+        <div class="hd"><h3>体育总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+                      </table>
+        </div>
+    </div><div class="ct hot" id="hot6" style="display:none">
+        <div class="hd"><h3>纪录片总人气排行榜</h3></div>
+        <div class="top_table">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <th>序号</th>
+              <th class="name">电影名称</th>
+              <th>点击数</th>
+              <th>网友评分</th>
+              <th class="nobrd">更新日期</th>
+            </tr>
+                      </table>
+        </div>
+    </div>    
+    <span class="bl"></span><span class="br"></span> 
+    </div>
+</div>
+</div>
+<div id="footer">
+	本网站提供的最新电视剧和电影资源均系收集于各大视频网站，本网站只提供web页面服务，并不提供影片资源存储，也不参与录制、上传。<br />
+	Copyright © 2007 - 2011 <a href="movie.84fun.com/">光线CMS</a> Some Rights Reserved 粤ICP备10038673号 <a href="/map/lists/id/baidu/limit/500.xml">sitemap</a> <a href="/map/lists/id/google/limit/500.xml">sitemap</a><br />
+</div>
+</div>
+</body>
+</html>

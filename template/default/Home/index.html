@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<title>{$webtitle}</title>
+<style type="text/css">
+/* slider layout */
+.lof-slidecontent { position:relative;	overflow:hidden;	border:#F4F4F4 solid 1px;}
+.lof-slidecontent .preload{	height:100%;	width:100%;	position:absolute;	top:0;	left:0;	z-index:100000;	text-align:center;	background:#FFF}
+.lof-slidecontent .preload div{	height:100%;	width:100%;	background:transparent url(template/default/images/slider/load-indicator.gif) no-repeat scroll 50% 50%;}
+.lof-slidecontent  .sliders-wrapper{	position:relative;	height:100%;	width:900px;	z-index:3px;	overflow:hidden; }
+.lof-slidecontent  ul.sliders-wrap-inner{overflow:hidden;	background:transparent url(template/default/images/slider/load-indicator.gif) no-repeat scroll 50% 50%;	padding:0px;	margin:0;	position:absolute;	overflow:hidden;}
+.lof-slidecontent  ul.sliders-wrap-inner li{overflow:hidden;	padding:0px;margin:0px;	float:left;	position:relative;}
+.lof-slidecontent  .lof-opacity { width:100%; height:100%; }
+.lof-slidecontent  .lof-opacity  li{position:absolute!important;	top:0;	left:0;	float:inherit!important; }
+.lof-slidecontent  .navigator-content {position:absolute;
+	left:0;
+	top:00px;
+	z-index:100;
+	height:300px;
+	width:310px;
+	overflow:hidden;
+	color:#FFF
+}
+.lof-slidecontent  .navigator-wrapper{	position:relative;	z-index:10;
+	height:180px;
+	width:310px;
+	overflow:hidden;
+	color:#FFF;
+	float:left
+}
+.lof-slidecontent  ul.navigator-wrap-inner{	top:0;	padding:0;	margin:0;	position:absolute;	width:100%; }
+.lof-slidecontent  ul.navigator-wrap-inner li{ cursor:hand; 	cursor:pointer;	list-style:none;	padding:0;	margin-left:0px;	overflow:hidden;	float:left;	display:block;	text-align:center;}
+ul.sliders-wrap-inner li img{	padding:0px;	}
+ul.sliders-wrap-inner li a.play-button{background: url(template/default/images/slider/slider_play_1.png) no-repeat;width:96px;height:96px;text-indent:-999px;position:absolute;top:130px;left:420px;opacity:0.8;}
+ul.sliders-wrap-inner li a.play-button:hover{opacity:1.0;}
+.lof-slidecontent .slider-description > div {
+	padding:12px;
+}
+.lof-slidecontent .slider-description a.readmore{color:#58B1EA;}
+.lof-slidecontent .slider-description a{ color:#FFF;}
+.lof-slidecontent .slider-description{
+	z-index:100px;
+	position:absolute;
+	bottom:0;
+	right:0px;
+	width:100%;
+	background:url(template/default/images/slider/bg_trans.png);
+	color:#FFF;
+    line-height: 22px;  
+}
+.lof-slidecontent .slider-description h4 {font-size: 14px;margin: 10px 0;padding: 0; }
+.lof-slidecontent .slider-description .slider-meta a{	
+	margin:0;
+	background:#C01F25;
+	padding:3px 3px;
+	text-decoration:none;
+    font-size:14px;
+}
+.lof-slidecontent  .item-meta a:hover{	text-decoration:underline;}
+.lof-slidecontent  .item-meta i {}
+/* item navigator */
+.lof-slidecontent ul.navigator-wrap-inner  li.active{ }
+.lof-slidecontent ul.navigator-wrap-inner  li >  div{
+	background:url(template/default/images/slider/transparent_bg.png);
+	color:#FFF;
+	height:100%;
+	position:relative;
+	padding-left:15px;
+	border-top:1px solid #E1E1E1;
+	text-align:left
+}
+.lof-slidecontent ul.navigator-wrap-inner li.active div{
+	background:url(template/default/images/slider/grad-bg.gif);
+	color:#FFF;
+}
+.lof-slidecontent ul.navigator-wrap-inner li img{
+	height:60px;
+	width:60px;
+	margin:15px 15px 10px 0px;
+	float:left;
+	padding:3px;
+	border:#C5C5C5 solid 1px;
+}
+.lof-slidecontent ul.navigator-wrap-inner li.active img, 
+.lof-slidecontent ul.navigator-wrap-inner li:hover img {
+	border:#6C8E5C solid 1px;
+}
+.lof-slidecontent  .button-next, 
+.lof-slidecontent .button-previous{
+	display:block;
+	width:40px;
+	color:#FFF;
+	cursor:pointer;
+	position:absolute;
+	height:100%;
+	z-index:40;
+	top:0;
+	text-indent:-999px;
+
+}
+.lof-slidecontent   .button-next {
+	right:0px;
+	background:url(template/default/images/slider/next.png) no-repeat right center;
+}
+.lof-slidecontent  .button-previous {
+	left:0px;
+	background:url(template/default/images/slider/previous.png) no-repeat left center;
+} 
+</style>
+<include file="system" />
+<link rel='stylesheet' type='text/css' href='{$tplpath}template__135.css'>
+<link rel="shortcut icon" href="{$webpath}favicon.ico" />
+</head>
+<body>  
+<div id="wrapper">
+<include file="header" />
+<div class="box">
+    <div id="jslidernews3" class="lof-slidecontent" style="width:958px; height:350px;">
+        <div class="preload"><div></div></div>
+        <div  class="button-previous">Previous</div>
+        <!-- MAIN CONTENT --> 
+        <div class="main-slider-content" style="width:958px; height:350px;">
+            <ul class="sliders-wrap-inner">
+                <gxcms name="slide" order="oid asc">
+                <li>
+                    <a href="{$slide.link}" title="{$slide.title}在线播放" class="play-button">{$slide.title}在线播放</a>
+                    <img src="{$slide.picurl}" alt="{$slide.title}" >           
+                        <div class="slider-description">
+                            <div class="description-wrapper">
+                                <div class="slider-meta"><a target="_parent" title="{$slide.title}" href="{$slide.link}">{$slide.title}</a></div>
+                                <p>{$slide.content}
+                                    <a class="readmore" href="{$slide.link}">立刻观看</a>
+                                </p>
+                            </div>
+                        </div>
+                </li>
+                </gxcms>
+            </ul>  	
+        </div>
+        <!-- END MAIN CONTENT --> 
+        <div class="button-next">Next</div>
+    </div> 
+</div>      
+<div class="box">
+  <div class="left_col">
+	<div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>最近更新</h3><a href="{$webpath}search/?addtime=<?php echo date('Y-m-d')?>" class="more">今日更新</a></div>
+        <ul class="top index_top_video">
+        <gxcms name="video" limit="12" order="addtime desc">
+        	<lt name="i" value="4"><li><else /><eq name="i" value="12"><li class="nobrd b"><else /><li class="b"></eq></lt><em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,11}</a> <span>{$video.addtime|get_color_date='m-d',###}</span></li>
+        </gxcms>
+        </ul>
+        <div class="total">今日更新：<span>[{:get_channel_count(0)}]</span> 总电影数量：<span>[{:get_channel_count(-1)}]</span></div>
+    </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd"><h3 class="rec"><span>近期热片推荐</span></h3><a href="{$webpath}search/" class="more">全部电影电视剧&gt;&gt;</a> </div>
+        <ul class="mov_pic_list index_rec">
+        <gxcms name="video" limit="10" order="stars desc,addtime desc,weekhits desc">
+            <li><div class="pic"><a href="{$video.readurl}" target="_blank" title="{$video.title}"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98" alt="{$video.title}" /></a></div><div class="ver">{$video.intro|default='最新热片'}</div><div class="mid_title"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,8}</a></div></li>
+        </gxcms>
+        </ul>
+      </div>
+    <span class="bl"></span><span class="br"></span></div>
+  </div>
+</div>
+<div class="box">
+  <div class="left_col">
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>{:get_channel_name(2)}热播榜</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a> </div>
+        <ul class="top index_top_video">
+        <gxcms name="video" cid="2" limit="13" order="score desc">
+          	<lt name="i" value="4"><li><else /><eq name="i" value="13"><li class="nobrd b"><else /><li class="b"></eq></lt><em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,11}</a><lt name="i" value="4"><span style="color:#e02e2e;"><else /><span></lt>{$video.score}</span></li>
+        </gxcms>
+        </ul>
+    </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd">
+          <h3>{:get_channel_name(2)}</h3><a href="{:get_channel_name(2,'showurl')}" class="more">全部电视剧&gt;&gt;</a>
+          <div class="sort"><gxcms name="menu" ids="2"><gxfor name="menu.son" id="menuson"><a href="{$menuson.showurl}" title="{$menuson.cname}">{$menuson.cname}</a></gxfor></gxcms></div>
+        </div>
+        <div class="index_tv">
+          <ul class="mov_pic_list">
+          <gxcms name="video" cid="2" limit="5" order="addtime desc">
+            <li><div class="pic"><a href="{$video.readurl}" target="_blank" title="{$video.title}"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98" alt="{$video.title}" /></a></div><div class="ver">{$video.intro|default='最新热片'}</div><div class="mid_title"><a href="{$video.readurl}" mid_title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,8}</a></div></li>
+          </gxcms>
+          </ul>
+          <div class="mov_text_list"><ul>
+          	<gxcms name="video" cid="2" limit="5,24" order="addtime desc" mod="6">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+        </div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+  </div>
+</div>
+<div class="box">
+  <div class="left_col">
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>{:get_channel_name(1)}热播榜</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a> </div>
+        <ul class="top index_top_video">
+        <gxcms name="video" cid="1" limit="10" order="score desc">
+          	<lt name="i" value="4"><li><else /><eq name="i" value="10"><li class="nobrd b"><else /><li class="b"></eq></lt><em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,11}</a><lt name="i" value="4"><span style="color:#e02e2e;"><else /><span></lt>{$video.score}</span></li>
+        </gxcms>
+        </ul>
+    </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd">
+          <h3>{:get_channel_name(1)}</h3><a href="{:get_channel_name(1,'showurl')}" class="more">全部电影&gt;&gt;</a>
+          <div class="sort"><gxcms name="menu" ids="1"><gxfor name="menu.son" id="menuson"> <a href="{$menuson.showurl}" title="{$menuson.cname}">{$menuson.cname}</a></gxfor></gxcms></div>
+        </div>
+        <div class="index_mov">
+          <ul class="mov_pic_list">
+          <gxcms name="video" cid="1" limit="5" order="addtime desc">
+            <li><div class="pic"><a href="{$video.readurl}" target="_blank" title="{$video.title}"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98" alt="{$video.title}" /></a></div><div class="ver">{$video.intro|default='最新热片'}</div><div class="mid_title"><a href="{$video.readurl}" mid_title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,8}</a></div></li>
+          </gxcms>
+          </ul>
+          <div class="mov_text_list"><ul>
+          	<gxcms name="video" cid="1" limit="5,12" order="addtime desc" mod="3">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+        </div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+  </div>
+</div>
+<div class="box">
+  <div class="left_col">
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>{:get_channel_name(3)}热播榜</h3><a href="{$topurl}" class="more">更多&gt;&gt;</a> </div>
+        <ul class="top index_top_video">
+        <gxcms name="video" cid="3" limit="10" order="score desc">
+          	<lt name="i" value="4"><li><else /><eq name="i" value="10"><li class="nobrd b"><else /><li class="b"></eq></lt><em>{$i}</em><a href="{$video.readurl}" target="_blank" title="{$video.title}">{$video.title|get_replace_html=0,11}</a><lt name="i" value="4"><span style="color:#e02e2e;"><else /><span></lt>{$video.score}</span></li>
+        </gxcms>
+        </ul>
+    </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd">
+          <h3>{:get_channel_name(3)}</h3><a href="{:get_channel_name(3,'showurl')}" class="more">全部动漫卡通&gt;&gt;</a>
+        </div>
+        <div class="index_mov">
+          <ul class="mov_pic_list">
+          <gxcms name="video" cid="3" limit="5" order="addtime desc">
+            <li><div class="pic"><a href="{$video.readurl}" target="_blank" title="{$video.title}"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98" alt="{$video.title}" /></a></div><div class="ver">{$video.intro|default='最新热片'}</div><div class="mid_title"><a href="{$video.readurl}" mid_title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,8}</a></div></li>
+          </gxcms>
+          </ul>
+          <div class="mov_text_list"><ul>
+          	<gxcms name="video" cid="3" limit="5,12" order="addtime desc" mod="3">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+        </div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+  </div>
+</div>
+<!--内容 网友最爱&动漫&记录片&音乐&体育开始-->
+<div class="box">
+  <div class="left_col">
+    <div class="topbrd"></div>
+    <div class="bd"><div class="ct">
+        <div class="hd"><h3>{:get_channel_name(4)}热播榜</h3></div>
+        <ul class="top">
+          <gxcms name="video" cid="4" limit="2" order="score desc">
+          <li class="v" style="border:none; margin-top:15px"><a href="{$video.readurl}" target="_blank" class="pic" alt="{$video.title}"><img src="{$video.picurl}" onerror="this.src='{$webpath}views/images/nophoto.jpg'" border="0" height="140" width="98" alt="{$video.title}" /></a>
+          <div class="info">
+          <p class="title"><a href="{$video.readurl}" title="{$video.title}">{$video.title|get_replace_html=0,7}</a></p>
+          <p class="score">网友评分：<strong>{$video.score}</strong></p>
+          <p>说明：{$video.content|get_replace_html=0,40}</p>
+          </div>
+          </li>
+          </gxcms>
+        </ul>
+      </div></div>
+    <div class="btmbrd"></div>
+  </div>
+  <div class="right_col">
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd"><h3>{:get_channel_name(4)}</h3><a href="{:get_channel_name(4,'showurl')}" class="more">全部综艺节目&gt;&gt;</a> </div>
+           <div class="mov_text_list  index_other"><ul>
+          	<gxcms name="video" cid="4" limit="12" order="addtime desc" mod="3">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+      </div>
+      <span class="bl"></span><span class="br"></span></div>
+    <div class="blank"></div>
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+        <div class="ct">
+        <div class="hd"><h3>{:get_channel_name(6)}</h3><a href="{:get_channel_name(6,'showurl')}" class="more">全部纪录片&gt;&gt;</a> </div>
+           <div class="mov_text_list  index_other"><ul>
+          	<gxcms name="video" cid="6" limit="12" order="addtime desc" mod="3">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+    <div class="blank"></div>
+    <div class="bd"><span class="tl"></span><span class="tr"></span>
+      <div class="ct">
+        <div class="hd"><h3>{:get_channel_name(5)}</h3><a href="{:get_channel_name(5,'showurl')}" class="more">全部体育节目&gt;&gt;</a> </div>
+           <div class="mov_text_list  index_other"><ul>
+          	<gxcms name="video" cid="5" limit="12" order="addtime desc" mod="3">
+            <eq name="mod" value="0"><li class="nobrd"><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></ul><ul><else /><li><a href="{$video.readurl}" title="{$video.title}" target="_blank">{$video.title|get_replace_html=0,10}</a></li></eq>
+            </gxcms>
+          </ul></div>
+      </div>
+      <span class="bl"></span><span class="br"></span> </div>
+  </div>
+</div>
+<div class="friend_link bd">
+<span class="tl"></span><span class="tr"></span>
+  <div class="ct">
+    <div class="hd"><h3>友情链接</h3></div>
+    <ul>
+    <gxcms name="link" limit="100" order="type asc,oid desc">
+    <eq name="link.type" value="1">
+    <li><a href="{$link.url}" target="_blank">{$link.title|get_replace_html=0,8}</a></li>
+    <else />
+    <li><a href="{$link.url}" target="_blank"><img src="{$link.logo}" alt="{$link.title}" width="88" height="31"/></a></li>
+    </eq>
+    </gxcms></ul>
+  </div>
+  <span class="bl"></span><span class="br"></span> 
+</div>
+<script type="text/javascript" src="{$tplpath}jquery.slider.js"></script>
+<script type="text/javascript">    
+    var buttons = { previous:$('#jslidernews3 .button-previous') ,
+        next:$('#jslidernews3 .button-next') };
+    
+    var _complete = function(slider, index){ 
+        $('#jslidernews3 .slider-description').animate({height:0});
+        slider.find(".slider-description").animate({height:80}) 
+    };							;
+    $('#jslidernews3').lofJSidernews({ 
+        interval        : 5000,
+        direction		: 'opacity',	
+        easing			: 'easeInOutExpo',
+        duration		: 1200,
+        auto		 	: true,
+        mainWidth       : 958,
+        buttons			: buttons,
+        onComplete      :_complete 
+    });	
+</script> 
+<include file="footer" />
+</div>
+</body>
+</html>

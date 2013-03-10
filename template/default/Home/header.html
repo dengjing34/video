@@ -1,0 +1,41 @@
+<script type="text/javascript" src="{$tplpath}template__56.js"></script>
+<style type="text/css">
+#subMenu{border-left:1px solid #C5DDF6;border-right:1px solid #C5DDF6;padding:10px 5px;}
+#subMenu a:link,#subMenu a:visited,#subMenu a:hover,#subMenu a:active{margin:0 5px;padding:3px;border:1px solid #fff;}
+#subMenu a:hover,#subMenu a.cur{color:whitesmoke;background:#82CE11;border:1px solid #69B007; -moz-border-radius:3px;-webkit-border-radius:3px;text-decoration:none;text-shadow:0 1px 0 #333;-moz-transition:background .4s linear;-webkit-transition:background .4s linear;}
+</style>
+<div class="header">
+  <div class="top">
+    <a title="{$webname}" class="logo" href="{$webpath}" style="text-indent:-999px;">{$webname}</a>
+    <if condition="C('user_register') eq 1"><div id="Login" class="login"></div></if>
+    <div class="control"><a href="{$rssurl}">RSS订阅</a>&nbsp;|&nbsp;<a href="javascript:void(0)" id="fav">收藏本站</a>&nbsp;|&nbsp;<a href="{$guestbookurl}">留言反馈</a>&nbsp;|&nbsp;<span class="his"  id="ggg" onmouseover="fnDisplayMenu(this,'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" ><a class="headerMnuLink" id="mnuArtStylesLink" href="javascript:void(0);">播放记录</a></span></div>
+
+    <div class="popup1" id="mnuArtStyles"  style="display:none" onmouseover="fnDisplayMenu2($('#mnuArtStylesLink'),'mnuArtStyles');" onmouseout="fnHideMenu('mnuArtStyles'); fnRemoveHighlight('mnuArtStyles');" >
+      <div id="history">
+      </div>
+   </div>
+
+  </div>
+  <div class="nav"><a href="{$webpath}" <if condition="$model eq 'index'">class="cur"</if>>首页</a>
+    <gxcms name="menu">
+    <a onfocus="this.blur();" href="{$menu.showurl}" <if condition="($menu['id'] eq $cid) or ($menu['id'] eq $pid)">class="cur"</if>>{$menu.cname}</a> </gxcms><span>|</span>
+    <a href="{$topurl}" <if condition="check_model('top10') eq 1">class="cur"</if>>排行</a>
+    <a href="{$specialurl}" <if condition="check_model('special') eq 1">class="cur"</if>>专题</a> 
+  </div>
+    <div id="subMenu">
+        <gxcms name="menu" ids="1,2">
+            <gxfor name="menu.son" id="menuson">
+                <a href="{$menuson.showurl}" title="{$menuson.cname}"<if condition="$menuson['id'] eq $cid">class="cur"</if>>{$menuson.cname}</a>
+            </gxfor>
+        </gxcms>   
+    </div>     
+  <div class="query"> 
+    <span class="query_l"></span>     
+    <form action="{$webpath}search/" onsubmit="$('input:hidden').remove();$('#q').val($('#q').val().replace('输入演员,影视剧名字或拼音', ''));" method="get" name="search" id="search" >
+      <input type="text" onblur="if($(this).val() == '') $(this).val('输入演员,影视剧名字或拼音');" onfocus="if($(this).val() == '输入演员,影视剧名字或拼音') $(this).val('');" value="{$keyword|default='输入演员,影视剧名字或拼音'}" placeholder="输入演员,影视剧名字或拼音" x-webkit-speech="x-webkit-speech" id="q" name="q" autocomplete="off" maxlength="35">      
+      <button type="submit" class="search_bt"><span>搜索</span></button>
+    </form>
+    <div class="hot_kw">热门：{$hotkey}</div>
+    <span class="query_r"></span> 
+  </div>      
+</div>

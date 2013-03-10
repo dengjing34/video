@@ -1,0 +1,62 @@
+RewriteEngine On
+<IfModule mod_expires.c>  
+ExpiresActive On  
+ExpiresDefault "access plus 12 month"  
+ExpiresByType text/html "access plus 12 months"  
+ExpiresByType text/css "access plus 12 months"  
+ExpiresByType image/gif "access plus 12 months"  
+ExpiresByType image/jpeg "access plus 12 months"  
+ExpiresByType image/jpg "access plus 12 months"  
+ExpiresByType image/png "access plus 12 months"  
+EXpiresByType application/x-shockwave-flash "access plus 12 months"  
+EXpiresByType application/x-javascript      "access plus 12 months"  
+ExpiresByType video/x-flv "access plus 12 months"  
+</IfModule>  
+  
+<IfModule mod_deflate.c>  
+SetOutputFilter DEFLATE  
+AddOutputFilterByType DEFLATE text/xml text/html text/css image/gif image/jpeg image/png application/x-javascript  
+</IfModule>
+
+#You should avoid using .htaccess files completely if you have access to httpd main server config file. 
+#Using .htaccess files slows down your Apache server. 
+#Any directive that you can include in a .htaccess file is better set in a <Directory> block, as it will have the same effect with better performance.
+<IfModule pagespeed_module>
+ModPagespeed on
+ModPagespeedRewriteLevel PassThrough
+ModPagespeedEnableFilters combine_css,combine_javascript,rewrite_images
+#ModPagespeedEnableFilters lazyload_images
+ModPagespeedEnableFilters rewrite_css,rewrite_javascript
+#ModPagespeedEnableFilters collapse_whitespace
+#ModPagespeedLowercaseHtmlNames on
+#ModPagespeedEnableFilters inline_css,inline_javascript
+</IfModule> 
+
+#for rewrite no www domain 
+RewriteCond %{HTTP_HOST} ^84fun.com [NC]
+RewriteRule ^(.*)$ http://www.84fun.com/$1 [L,R=301]
+#for rewrite no www domain
+
+# if php files are in sub dir, such as change / to /subdir/
+RewriteBase /
+
+# Rewrite system rule do not modify
+RewriteRule ^video/search/(.*)$ index.php\?s=video/search/$1
+RewriteRule ^list/(.*)$ index.php\?s=video/lists/id/$1
+RewriteRule ^movie/(.*)$ index.php\?s=video/detail/id/$1
+RewriteRule ^player/(.*)$ index.php\?s=video/play/id/$1
+RewriteRule ^info/search/(.*)$ index.php\?s=info/search/$1
+RewriteRule ^newslist/(.*)$ index.php\?s=info/lists/id/$1
+RewriteRule ^news/(.*)$ index.php\?s=info/detail/id/$1
+RewriteRule ^special/(.*)$ index.php\?s=special/$1
+RewriteRule ^guestbook/(.*)$ index.php\?s=guestbook/$1
+RewriteRule ^top10/(.*)$ index.php\?s=top10/$1
+RewriteRule ^my/(.*)$ index.php\?s=my/$1
+RewriteRule ^map/lists/(.*)$ index.php\?s=map/lists/$1
+RewriteRule ^sitemap/(.*)$ sitemap.php
+RewriteRule ^app/(.*)$ app/index.php
+RewriteRule ^search/(.*)$ search/index.php
+#for cleanup js&css cache by version no
+RewriteRule ^(.*)/(default|css|js|system)/(.*)__([0-9]+)\.(css|js)$ $1/$2/$3.$5
+#for error url rewrite
+RewriteRule ^(zufang|xiaoqu|ershoufang|a)/(.*)$ / [L,R=301]
