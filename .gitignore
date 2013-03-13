@@ -1,5 +1,4 @@
 /cache/*
-/uploads/*
 /nbproject/*
 /config.php
 !/config.sample.php
